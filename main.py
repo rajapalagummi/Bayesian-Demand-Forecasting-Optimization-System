@@ -74,6 +74,16 @@ def run_demo():
         mlflow.log_metric("mip_satisfaction_rate",
                            opt_results["comparison"]["mip_satisfaction_rate"])
 
+        from analysis.statistical import run_statistical_analysis
+        stat_results = run_statistical_analysis(
+            df=df,
+            ols_df=ols_df,
+            bayesian_df=bayesian_df,
+            forecast_results=forecast_results,
+            opt_results=opt_results,
+        )
+
+
         results = {
             "mode": "demo",
             "n_products": df["product_id"].nunique(),
