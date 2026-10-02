@@ -83,6 +83,14 @@ def run_demo():
             opt_results=opt_results,
         )
 
+        from analysis.factor_decay import run_factor_decay_analysis
+        decay_results = run_factor_decay_analysis(
+            df=df,
+            ols_df=ols_df,
+            bayesian_df=bayesian_df,
+        )
+
+
 
         results = {
             "mode": "demo",
