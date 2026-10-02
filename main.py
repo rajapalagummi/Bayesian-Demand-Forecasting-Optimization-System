@@ -90,6 +90,14 @@ def run_demo():
             bayesian_df=bayesian_df,
         )
 
+        from analysis.advanced_eda import run_advanced_eda
+        eda_results = run_advanced_eda(
+            df=df,
+            ols_df=ols_df,
+            bayesian_df=bayesian_df,
+            opt_results=opt_results,
+        )
+
 
 
         results = {
