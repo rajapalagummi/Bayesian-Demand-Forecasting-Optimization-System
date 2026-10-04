@@ -329,8 +329,8 @@ def optimization_analysis(opt_results, df):
     )
     save_fig(fig, "optimization_comparison")
 
-    if df is not None and "price" in df.columns and "demand" in df.columns:
-        demand_stats = df.groupby("product_id")["demand"].agg(
+    if df is not None and "price" in df.columns and "units_sold" in df.columns:
+        demand_stats = df.groupby("product_id")["units_sold"].agg(
             ["mean", "std", "min", "max"]
         ).reset_index()
         demand_stats.columns = ["product_id", "mean_demand",
@@ -354,27 +354,27 @@ def optimization_analysis(opt_results, df):
 
 
 def price_demand_analysis(df):
-    if df is None or "price" not in df.columns or "demand" not in df.columns:
+    if df is None or "price" not in df.columns or "units_sold" not in df.columns:
         return {}
 
     results = {}
 
     corr, p = stats.pearsonr(
-        df["price"].dropna(), df["demand"].dropna()
+        df["price"].dropna(), df["units_sold"].dropna()
     )
     rho, rho_p = stats.spearmanr(
-        df["price"].dropna(), df["demand"].dropna()
+        df["price"].dropna(), df["units_sold"].dropna()
     )
     results["price_demand_correlation"] = {
         "pearson_r": round(float(corr), 4),
         "pearson_p": round(float(p), 4),
         "spearman_rho": round(float(rho), 4),
         "spearman_p": round(float(rho_p), 4),
-        "n_observations": int(len(df.dropna(subset=["price", "demand"]))),
+        "n_observations": int(len(df.dropna(subset=["price", "units_sold"]))),
     }
 
     results["price_stats"] = describe_series(df["price"].dropna(), "Price")
-    results["demand_stats"] = describe_series(df["demand"].dropna(), "Demand")
+    results["demand_stats"] = describe_series(df["units_sold"].dropna(), "Demand")
 
     fig = make_subplots(
         rows=2, cols=2,
@@ -390,22 +390,22 @@ def price_demand_analysis(df):
     ), row=1, col=1)
 
     fig.add_trace(go.Histogram(
-        x=df["demand"].dropna(), name="Demand",
+        x=df["units_sold"].dropna(), name="Demand",
         marker_color="#e74c3c", showlegend=False,
     ), row=1, col=2)
 
     sample = df.sample(min(2000, len(df)), random_state=42)
     fig.add_trace(go.Scatter(
-        x=sample["price"], y=sample["demand"],
+        x=sample["price"], y=sample["units_sold"],
         mode="markers",
         marker=dict(color="#9b59b6", size=3, opacity=0.4),
         name="Price-Demand", showlegend=False,
     ), row=2, col=1)
 
-    if "week" in df.columns:
-        weekly = df.groupby("week")["demand"].mean().reset_index()
+    if "week_num" in df.columns:
+        weekly = df.groupby("week_num")["units_sold"].mean().reset_index()
         fig.add_trace(go.Scatter(
-            x=weekly["week"], y=weekly["demand"],
+            x=weekly["week_num"], y=weekly["units_sold"],
             mode="lines", line=dict(color="#2ecc71", width=2),
             name="Avg Weekly Demand", showlegend=False,
         ), row=2, col=2)

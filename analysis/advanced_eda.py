@@ -106,13 +106,13 @@ def demand_seasonality_heatmap(df):
     """Demand seasonality heatmap — products vs weeks."""
     results = {}
 
-    if "week" not in df.columns or "demand" not in df.columns:
+    if "week_num" not in df.columns or "units_sold" not in df.columns:
         return results
 
     pivot = df.pivot_table(
         index="product_id",
-        columns="week",
-        values="demand",
+        columns="week_num",
+        values="units_sold",
         aggfunc="mean"
     )
 
@@ -137,10 +137,10 @@ def demand_seasonality_heatmap(df):
     save_fig(fig, "eda_demand_seasonality_heatmap")
 
     weekly_avg = pivot.mean(axis=0).reset_index()
-    weekly_avg.columns = ["week", "avg_demand"]
+    weekly_avg.columns = ["week_num", "avg_demand"]
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(
-        x=weekly_avg["week"],
+        x=weekly_avg["week_num"],
         y=weekly_avg["avg_demand"],
         mode="lines",
         fill="tozeroy",
@@ -149,7 +149,7 @@ def demand_seasonality_heatmap(df):
         name="Avg Demand",
     ))
     fig2.add_vline(
-        x=int(weekly_avg.loc[weekly_avg["avg_demand"].idxmax(), "week"]),
+        x=int(weekly_avg.loc[weekly_avg["avg_demand"].idxmax(), "week_num"]),
         line_dash="dash", line_color="red",
         annotation_text="Peak demand"
     )
@@ -179,8 +179,8 @@ def price_sensitivity_clustering(df, ols_df, n_clusters=3):
 
     features = ols_df[["product_id", "ols_elasticity"]].dropna().copy()
 
-    if "demand" in df.columns:
-        demand_stats = df.groupby("product_id")["demand"].agg(["mean", "std"]).reset_index()
+    if "units_sold" in df.columns:
+        demand_stats = df.groupby("product_id")["units_sold"].agg(["mean", "std"]).reset_index()
         demand_stats.columns = ["product_id", "mean_demand", "std_demand"]
         demand_stats["demand_cv"] = demand_stats["std_demand"] / demand_stats["mean_demand"]
         features = features.merge(demand_stats, on="product_id", how="left")
@@ -264,17 +264,17 @@ def demand_distribution_by_tier(df, ols_df):
     df_merged = df_merged.dropna(subset=["tier"])
     df_merged["tier"] = df_merged["tier"].astype(str)
 
-    if len(df_merged) == 0 or "demand" not in df_merged.columns:
+    if len(df_merged) == 0 or "units_sold" not in df_merged.columns:
         return results
 
-    tier_stats = df_merged.groupby("tier", observed=True)["demand"].agg(["mean", "std", "median"]).reset_index()
+    tier_stats = df_merged.groupby("tier", observed=True)["units_sold"].agg(["mean", "std", "median"]).reset_index()
     tier_stats.columns = ["tier", "mean_demand", "std_demand", "median_demand"]
     results["tier_demand_stats"] = tier_stats.to_dict(orient="records")
 
     fig = go.Figure()
     colors = {"Low Elasticity": "#2ecc71", "Medium Elasticity": "#f39c12", "High Elasticity": "#e74c3c"}
     for tier in df_merged["tier"].unique():
-        tier_data = df_merged[df_merged["tier"] == tier]["demand"].dropna()
+        tier_data = df_merged[df_merged["tier"] == tier]["units_sold"].dropna()
         fig.add_trace(go.Violin(
             y=tier_data,
             name=str(tier),
@@ -300,10 +300,10 @@ def detect_outlier_products(df, ols_df):
     """Identify products with unusual demand or elasticity patterns."""
     results = {}
 
-    if "demand" not in df.columns:
+    if "units_sold" not in df.columns:
         return results
 
-    product_stats = df.groupby("product_id")["demand"].agg(
+    product_stats = df.groupby("product_id")["units_sold"].agg(
         ["mean", "std", "min", "max"]
     ).reset_index()
     product_stats.columns = ["product_id", "mean_demand", "std_demand", "min_demand", "max_demand"]

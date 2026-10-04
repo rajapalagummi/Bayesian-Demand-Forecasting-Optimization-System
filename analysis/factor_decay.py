@@ -55,14 +55,14 @@ def compute_elasticity_autocorrelation(df, max_lag=10):
 
     for product_id in df["product_id"].unique():
         prod_df = df[df["product_id"] == product_id].copy()
-        if "week" not in prod_df.columns or len(prod_df) < max_lag + 5:
+        if "week_num" not in prod_df.columns or len(prod_df) < max_lag + 5:
             continue
 
-        prod_df = prod_df.sort_values("week")
+        prod_df = prod_df.sort_values("week_num")
 
-        if "price" in prod_df.columns and "demand" in prod_df.columns:
+        if "price" in prod_df.columns and "units_sold" in prod_df.columns:
             price_chg = prod_df["price"].pct_change().replace([np.inf, -np.inf], np.nan)
-            demand_chg = prod_df["demand"].pct_change().replace([np.inf, -np.inf], np.nan)
+            demand_chg = prod_df["units_sold"].pct_change().replace([np.inf, -np.inf], np.nan)
             elasticity = (demand_chg / price_chg).replace([np.inf, -np.inf], np.nan)
             elasticity = elasticity.dropna()
 
@@ -233,9 +233,9 @@ def compute_ic_decay(df, ols_df, bayesian_df, horizons=[1, 2, 4, 8]):
 
             future_demand = []
             for pid in valid["product_id"]:
-                prod_df = df[df["product_id"] == pid].sort_values("week") if "week" in df.columns else df[df["product_id"] == pid]
+                prod_df = df[df["product_id"] == pid].sort_values("week_num") if "week_num" in df.columns else df[df["product_id"] == pid]
                 if len(prod_df) > horizon:
-                    future_demand.append(prod_df["demand"].iloc[-1] if "demand" in prod_df.columns else np.nan)
+                    future_demand.append(prod_df["units_sold"].iloc[-1] if "units_sold" in prod_df.columns else np.nan)
                 else:
                     future_demand.append(np.nan)
 
@@ -299,12 +299,12 @@ def compute_elasticity_stability(df, ols_df):
     stability_records = []
     for product_id in df["product_id"].unique():
         prod_df = df[df["product_id"] == product_id].copy()
-        if "price" not in prod_df.columns or "demand" not in prod_df.columns:
+        if "price" not in prod_df.columns or "units_sold" not in prod_df.columns:
             continue
         if len(prod_df) < 10:
             continue
 
-        prod_df = prod_df.sort_values("week") if "week" in prod_df.columns else prod_df
+        prod_df = prod_df.sort_values("week_num") if "week_num" in prod_df.columns else prod_df
 
         mid = len(prod_df) // 2
         first_half = prod_df.iloc[:mid]
@@ -312,7 +312,7 @@ def compute_elasticity_stability(df, ols_df):
 
         def calc_elasticity(chunk):
             p_chg = chunk["price"].pct_change().replace([np.inf, -np.inf], np.nan)
-            d_chg = chunk["demand"].pct_change().replace([np.inf, -np.inf], np.nan)
+            d_chg = chunk["units_sold"].pct_change().replace([np.inf, -np.inf], np.nan)
             e = (d_chg / p_chg).replace([np.inf, -np.inf], np.nan).dropna()
             return float(e.mean()) if len(e) > 0 else np.nan
 
@@ -388,20 +388,20 @@ def compute_seasonal_elasticity(df):
     """
     results = {}
 
-    if "week" not in df.columns or "price" not in df.columns or "demand" not in df.columns:
+    if "week_num" not in df.columns or "price" not in df.columns or "units_sold" not in df.columns:
         return results
 
     df = df.copy()
-    df["quarter"] = ((df["week"] - 1) // 13 % 4 + 1).astype(int)
-    df["month_in_year"] = ((df["week"] - 1) % 52 // 4 + 1).astype(int)
+    df["quarter"] = ((df["week_num"] - 1) // 13 % 4 + 1).astype(int)
+    df["month_in_year"] = ((df["week_num"] - 1) % 52 // 4 + 1).astype(int)
 
-    price_chg = df.groupby(["product_id", "week"])["price"].first().groupby("product_id").pct_change()
-    demand_chg = df.groupby(["product_id", "week"])["demand"].first().groupby("product_id").pct_change()
+    price_chg = df.groupby(["product_id", "week_num"])["price"].first().groupby("product_id").pct_change()
+    demand_chg = df.groupby(["product_id", "week_num"])["units_sold"].first().groupby("product_id").pct_change()
 
     elasticity = (demand_chg / price_chg).replace([np.inf, -np.inf], np.nan).reset_index()
-    elasticity.columns = ["product_id", "week", "elasticity"]
-    elasticity = elasticity.merge(df[["product_id", "week", "quarter"]].drop_duplicates(),
-                                   on=["product_id", "week"], how="left")
+    elasticity.columns = ["product_id", "week_num", "elasticity"]
+    elasticity = elasticity.merge(df[["product_id", "week_num", "quarter"]].drop_duplicates(),
+                                   on=["product_id", "week_num"], how="left")
 
     quarterly = elasticity.groupby("quarter")["elasticity"].agg(["mean", "std", "count"]).reset_index()
     quarterly.columns = ["quarter", "mean_elasticity", "std_elasticity", "n_obs"]
