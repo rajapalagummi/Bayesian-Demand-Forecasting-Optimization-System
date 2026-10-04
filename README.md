@@ -37,6 +37,42 @@ DemandSense implements a full demand intelligence pipeline:
 
 ## Architecture
 
+```mermaid
+flowchart TD
+    A([Synthetic Retail Data\n10 Products · 104 Weeks]) --> B[Data Ingestion\ndata/ingest.py]
+    B --> C[Lag Feature Engineering\nlag_1, lag_4, rolling_4w, price_change_pct]
+
+    C --> D[OLS Elasticity]
+    C --> E[Bayesian Elasticity\nPyMC Hierarchical Model]
+    D & E --> F[Elasticity Comparison\nCI Width · 14.61% improvement]
+
+    C --> G[Forecast A/B Test]
+    G --> G1[SARIMA Baseline]
+    G --> G2[Elasticity-Informed SARIMAX]
+    G1 & G2 --> G3[19.09% MAPE improvement\n10/10 treatment wins]
+
+    C --> H[MIP Optimization\nPuLP Integer Programming]
+    H --> H1[60% satisfaction vs 0% greedy\n6.48% objective improvement]
+
+    F & G3 & H1 --> I[MLflow Tracking]
+    F & G3 & H1 --> J[Analysis Modules]
+
+    J --> K1[Statistical Analysis]
+    J --> K2[Elasticity Decay]
+    J --> K3[Advanced EDA]
+    J --> K4[Hypothesis Testing]
+
+    K1 & K2 & K3 & K4 --> L[(17 Plots · JSON · HTML)]
+
+    style A fill:#4A90D9,color:#fff
+    style E fill:#9B59B6,color:#fff
+    style G3 fill:#E74C3C,color:#fff
+    style H1 fill:#2ECC71,color:#fff
+    style L fill:#F39C12,color:#fff
+```
+
+See [architecture.md](architecture.md) for detailed system diagrams.
+
 ```
 DemandSense/
 ├── analysis/
@@ -58,9 +94,6 @@ DemandSense/
 └── LICENSE
 
 ```
-
-See [architecture.md](architecture.md) for full system diagrams.
-
 
 ---
 
