@@ -58,6 +58,9 @@ DemandSense/
 └── LICENSE
 ```
 
+See [architecture.md](architecture.md) for full system diagrams.
+
+
 ---
 
 ## Quickstart
