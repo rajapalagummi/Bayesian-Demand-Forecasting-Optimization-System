@@ -57,11 +57,9 @@ DemandSense/
 ├── requirements.txt
 └── LICENSE
 
-See [architecture.md](architecture.md) for full system diagrams.
-
 ```
 
-
+See [architecture.md](architecture.md) for full system diagrams.
 
 
 ---
