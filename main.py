@@ -98,6 +98,15 @@ def run_demo():
             opt_results=opt_results,
         )
 
+        from analysis.hypothesis_testing import run_hypothesis_testing
+        hypothesis_results = run_hypothesis_testing(
+            df=df,
+            ols_df=ols_df,
+            bayesian_df=bayesian_df,
+            forecast_results=forecast_results,
+            opt_results=opt_results,
+        )
+
 
 
         results = {
