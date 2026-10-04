@@ -56,9 +56,12 @@ DemandSense/
 ├── main.py                     # Pipeline orchestrator
 ├── requirements.txt
 └── LICENSE
-```
 
 See [architecture.md](architecture.md) for full system diagrams.
+
+```
+
+
 
 
 ---
