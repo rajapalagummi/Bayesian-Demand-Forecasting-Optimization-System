@@ -1,0 +1,177 @@
+{
+  "autocorrelation": {
+    "autocorrelation_by_lag": [
+      {
+        "lag": 1,
+        "mean_autocorr": 0.058550000000000005,
+        "std_autocorr": 0.1011125582924517,
+        "n_products": 10
+      },
+      {
+        "lag": 2,
+        "mean_autocorr": -0.16707,
+        "std_autocorr": 0.0975073678127852,
+        "n_products": 10
+      },
+      {
+        "lag": 3,
+        "mean_autocorr": -0.033229999999999996,
+        "std_autocorr": 0.07139013392775098,
+        "n_products": 10
+      },
+      {
+        "lag": 4,
+        "mean_autocorr": 0.04542,
+        "std_autocorr": 0.08944891527818793,
+        "n_products": 10
+      },
+      {
+        "lag": 5,
+        "mean_autocorr": 0.051980000000000005,
+        "std_autocorr": 0.10751332527231733,
+        "n_products": 10
+      },
+      {
+        "lag": 6,
+        "mean_autocorr": 0.0067700000000000034,
+        "std_autocorr": 0.1008345515077931,
+        "n_products": 10
+      },
+      {
+        "lag": 7,
+        "mean_autocorr": -0.06997,
+        "std_autocorr": 0.1609176604492013,
+        "n_products": 10
+      },
+      {
+        "lag": 8,
+        "mean_autocorr": -0.04568,
+        "std_autocorr": 0.12122598547982835,
+        "n_products": 10
+      },
+      {
+        "lag": 9,
+        "mean_autocorr": -0.01772,
+        "std_autocorr": 0.07674203252166023,
+        "n_products": 10
+      },
+      {
+        "lag": 10,
+        "mean_autocorr": -0.04054,
+        "std_autocorr": 0.13427134384438766,
+        "n_products": 10
+      }
+    ],
+    "peak_lag": 2,
+    "mean_lag1_autocorr": 0.0586
+  },
+  "half_life": {
+    "half_life_weeks": 4.53,
+    "decay_rate": 0.1531,
+    "decay_amplitude": 0.0724
+  },
+  "ic_decay": {
+    "ic_by_horizon": [
+      {
+        "horizon": 1,
+        "elasticity_type": "ols",
+        "ic": -0.0061,
+        "p_value": 0.9867,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 1,
+        "elasticity_type": "bayesian",
+        "ic": 0.0182,
+        "p_value": 0.9602,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 2,
+        "elasticity_type": "ols",
+        "ic": -0.0061,
+        "p_value": 0.9867,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 2,
+        "elasticity_type": "bayesian",
+        "ic": 0.0182,
+        "p_value": 0.9602,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 4,
+        "elasticity_type": "ols",
+        "ic": -0.0061,
+        "p_value": 0.9867,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 4,
+        "elasticity_type": "bayesian",
+        "ic": 0.0182,
+        "p_value": 0.9602,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 8,
+        "elasticity_type": "ols",
+        "ic": -0.0061,
+        "p_value": 0.9867,
+        "significant": false,
+        "n_products": 10
+      },
+      {
+        "horizon": 8,
+        "elasticity_type": "bayesian",
+        "ic": 0.0182,
+        "p_value": 0.9602,
+        "significant": false,
+        "n_products": 10
+      }
+    ]
+  },
+  "stability": {
+    "n_stable": 3,
+    "n_volatile": 7,
+    "pct_stable": 30.0,
+    "mean_elasticity_change": 0.6751
+  },
+  "seasonal": {
+    "quarterly_elasticity": [
+      {
+        "quarter": 1,
+        "mean_elasticity": -1.7407188723964668,
+        "std_elasticity": 3.5410305723108806,
+        "n_obs": 160
+      },
+      {
+        "quarter": 2,
+        "mean_elasticity": -1.5558853009505893,
+        "std_elasticity": 3.1336694912800827,
+        "n_obs": 180
+      },
+      {
+        "quarter": 3,
+        "mean_elasticity": -1.4819975755327957,
+        "std_elasticity": 3.4040806468158706,
+        "n_obs": 160
+      },
+      {
+        "quarter": 4,
+        "mean_elasticity": -1.0288723154063046,
+        "std_elasticity": 4.5898360622449035,
+        "n_obs": 166
+      }
+    ],
+    "most_elastic_quarter": 1,
+    "least_elastic_quarter": 4
+  }
+}

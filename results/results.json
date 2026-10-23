@@ -1,0 +1,28 @@
+{
+  "mode": "demo",
+  "n_products": 10,
+  "bayesian_vs_ols": {
+    "dense_n": 10,
+    "dense_bayesian_ci_width": 1.3548,
+    "dense_ols_ci_width": 1.5865,
+    "dense_ci_improvement_pct": 14.61,
+    "dense_bayesian_mae": 0.4807,
+    "dense_ols_mae": 0.1828,
+    "total_products": 10
+  },
+  "forecast_ab_test": {
+    "sarima_avg_mape": 0.2671,
+    "elasticity_avg_mape": 0.2118,
+    "mape_improvement_pct": 19.09,
+    "n_products_tested": 10,
+    "treatment_wins": 10
+  },
+  "optimization": {
+    "mip_objective": 17926.17,
+    "greedy_objective": 19168.03,
+    "mip_vs_greedy_improvement_pct": 6.48,
+    "mip_vs_equal_improvement_pct": 24.99,
+    "mip_satisfaction_rate": 60.0,
+    "greedy_satisfaction_rate": 0.0
+  }
+}

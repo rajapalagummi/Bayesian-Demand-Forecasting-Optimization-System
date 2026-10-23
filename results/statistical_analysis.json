@@ -1,0 +1,255 @@
+{
+  "price_demand": {
+    "price_demand_correlation": {
+      "pearson_r": -0.0022,
+      "pearson_p": 0.9436,
+      "spearman_rho": 0.0254,
+      "spearman_p": 0.415,
+      "n_observations": 1030
+    },
+    "price_stats": {
+      "label": "Price",
+      "n": 1030,
+      "mean": 13.4579,
+      "median": 14.22,
+      "std": 5.0165,
+      "skewness": -0.5401,
+      "kurtosis": -0.8931,
+      "min": 3.97,
+      "max": 22.2,
+      "q25": 10.3,
+      "q75": 17.7,
+      "is_normal_ks": false,
+      "is_normal_jb": false,
+      "ks_p": 0.0,
+      "jb_p": 0.0
+    },
+    "demand_stats": {
+      "label": "Demand",
+      "n": 1030,
+      "mean": 327.8087,
+      "median": 330.0,
+      "std": 179.7442,
+      "skewness": 0.2442,
+      "kurtosis": -0.8073,
+      "min": 44.0,
+      "max": 906.0,
+      "q25": 168.25,
+      "q75": 461.0,
+      "is_normal_ks": false,
+      "is_normal_jb": false,
+      "ks_p": 0.0003,
+      "jb_p": 0.0
+    }
+  },
+  "elasticity": {
+    "ols": {
+      "label": "OLS Elasticity",
+      "n": 10,
+      "mean": -1.46,
+      "median": -1.4004,
+      "std": 0.57,
+      "skewness": 0.1651,
+      "kurtosis": -0.9889,
+      "min": -2.2037,
+      "max": -0.4942,
+      "q25": -1.9618,
+      "q75": -1.1095,
+      "is_normal_ks": true,
+      "is_normal_jb": true,
+      "ks_p": 0.9752,
+      "jb_p": 0.763
+    },
+    "ols_outliers": {
+      "label": "OLS Elasticity",
+      "iqr_outliers": 0,
+      "iqr_outlier_pct": 0.0,
+      "zscore_outliers": 0,
+      "lower_fence": -3.2403,
+      "upper_fence": 0.169
+    },
+    "ols_bootstrap_ci": {
+      "observed_mean": -1.46,
+      "ci_lower": -1.8091,
+      "ci_upper": -1.1323,
+      "ci_level": 0.95,
+      "n_bootstrap": 1000
+    },
+    "bayesian": {
+      "label": "Bayesian Elasticity",
+      "n": 10,
+      "mean": -1.1091,
+      "median": -1.1099,
+      "std": 0.3127,
+      "skewness": 0.526,
+      "kurtosis": -0.1292,
+      "min": -1.557,
+      "max": -0.5384,
+      "q25": -1.3323,
+      "q75": -1.0189,
+      "is_normal_ks": true,
+      "is_normal_jb": true,
+      "ks_p": 0.8225,
+      "jb_p": 0.7837
+    },
+    "bayesian_outliers": {
+      "label": "Bayesian Elasticity",
+      "iqr_outliers": 1,
+      "iqr_outlier_pct": 10.0,
+      "zscore_outliers": 0,
+      "lower_fence": -1.8024,
+      "upper_fence": -0.5487
+    },
+    "bayesian_bootstrap_ci": {
+      "observed_mean": -1.1091,
+      "ci_lower": -1.2788,
+      "ci_upper": -0.9251,
+      "ci_level": 0.95,
+      "n_bootstrap": 1000
+    },
+    "bayesian_vs_ols_correlation": {
+      "pearson_r": 0.913,
+      "pearson_p": 0.0002,
+      "paired_ttest_t": -3.5578,
+      "paired_ttest_p": 0.0061,
+      "significant_difference": true,
+      "n_products": 10
+    }
+  },
+  "forecast": {
+    "sarima_mape": {
+      "label": "sarima_mape",
+      "n": 10,
+      "mean": 0.2671,
+      "median": 0.2795,
+      "std": 0.058,
+      "skewness": -0.1418,
+      "kurtosis": -1.7994,
+      "min": 0.1851,
+      "max": 0.3435,
+      "q25": 0.215,
+      "q75": 0.3148,
+      "is_normal_ks": true,
+      "is_normal_jb": true,
+      "ks_p": 0.6942,
+      "jb_p": 0.5939
+    },
+    "sarima_mape_outliers": {
+      "label": "sarima_mape",
+      "iqr_outliers": 0,
+      "iqr_outlier_pct": 0.0,
+      "zscore_outliers": 0,
+      "lower_fence": 0.0652,
+      "upper_fence": 0.4645
+    },
+    "sarima_mape_bootstrap_ci": {
+      "observed_mean": 0.2671,
+      "ci_lower": 0.2319,
+      "ci_upper": 0.2986,
+      "ci_level": 0.95,
+      "n_bootstrap": 1000
+    },
+    "elasticity_mape": {
+      "label": "elasticity_mape",
+      "n": 10,
+      "mean": 0.2118,
+      "median": 0.1976,
+      "std": 0.0436,
+      "skewness": 0.8403,
+      "kurtosis": -0.8219,
+      "min": 0.1697,
+      "max": 0.2838,
+      "q25": 0.1785,
+      "q75": 0.2369,
+      "is_normal_ks": true,
+      "is_normal_jb": true,
+      "ks_p": 0.6276,
+      "jb_p": 0.532
+    },
+    "elasticity_mape_outliers": {
+      "label": "elasticity_mape",
+      "iqr_outliers": 0,
+      "iqr_outlier_pct": 0.0,
+      "zscore_outliers": 0,
+      "lower_fence": 0.0908,
+      "upper_fence": 0.3246
+    },
+    "elasticity_mape_bootstrap_ci": {
+      "observed_mean": 0.2118,
+      "ci_lower": 0.1883,
+      "ci_upper": 0.2367,
+      "ci_level": 0.95,
+      "n_bootstrap": 1000
+    },
+    "mape_improvement_pct": {
+      "label": "mape_improvement_pct",
+      "n": 10,
+      "mean": 19.094,
+      "median": 12.6,
+      "std": 14.4735,
+      "skewness": 0.88,
+      "kurtosis": -1.0095,
+      "min": 4.78,
+      "max": 42.78,
+      "q25": 9.1725,
+      "q75": 30.08,
+      "is_normal_ks": true,
+      "is_normal_jb": true,
+      "ks_p": 0.4007,
+      "jb_p": 0.4874
+    },
+    "mape_improvement_pct_outliers": {
+      "label": "mape_improvement_pct",
+      "iqr_outliers": 0,
+      "iqr_outlier_pct": 0.0,
+      "zscore_outliers": 0,
+      "lower_fence": -22.1888,
+      "upper_fence": 61.4413
+    },
+    "mape_improvement_pct_bootstrap_ci": {
+      "observed_mean": 19.094,
+      "ci_lower": 11.2007,
+      "ci_upper": 27.7533,
+      "ci_level": 0.95,
+      "n_bootstrap": 1000
+    },
+    "forecast_significance": {
+      "paired_ttest_t": 3.6991,
+      "paired_ttest_p": 0.0049,
+      "mann_whitney_u": 80.0,
+      "mann_whitney_p": 0.0257,
+      "elasticity_wins": 10,
+      "sarima_wins": 0,
+      "significant": true
+    }
+  },
+  "optimization": {
+    "objectives": {
+      "MIP": 17926.17,
+      "Greedy": 19168.03,
+      "Equal Split": 23899.39
+    },
+    "satisfaction": {
+      "MIP": 60.0,
+      "Greedy": 0.0
+    },
+    "mip_improvement_pct": 6.48,
+    "demand_variability": {
+      "label": "Demand Coefficient of Variation",
+      "n": 10,
+      "mean": 0.239,
+      "median": 0.245,
+      "std": 0.0216,
+      "skewness": -0.2371,
+      "kurtosis": -1.1154,
+      "min": 0.2056,
+      "max": 0.2711,
+      "q25": 0.2225,
+      "q75": 0.2552,
+      "is_normal_ks": true,
+      "is_normal_jb": true,
+      "ks_p": 0.7354,
+      "jb_p": 0.725
+    }
+  }
+}

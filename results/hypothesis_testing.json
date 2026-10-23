@@ -1,0 +1,103 @@
+{
+  "elasticity_tests": [
+    {
+      "test": "OLS Elasticity vs Zero",
+      "statistic": -8.0992,
+      "p_value": 0.0,
+      "significant": true,
+      "effect_size": 2.5612,
+      "effect_label": "large",
+      "power": 1.0,
+      "ci_lower": -1.8091,
+      "ci_upper": -1.1323,
+      "n": 10
+    },
+    {
+      "test": "Bayesian vs OLS Paired t-test",
+      "statistic": -3.5578,
+      "p_value": 0.0061,
+      "significant": true,
+      "effect_size": 0.7631,
+      "effect_label": "medium",
+      "power": 0.6748,
+      "n": 10
+    },
+    {
+      "test": "Bayesian vs OLS Mann-Whitney",
+      "statistic": 31.0,
+      "p_value": 0.162,
+      "significant": false,
+      "effect_size": 0.7631,
+      "effect_label": "medium",
+      "n": 10
+    }
+  ],
+  "forecast_tests": {
+    "paired_ttest": {
+      "statistic": 3.6991,
+      "p_value": 0.0049,
+      "significant": true,
+      "effect_size": 1.0792,
+      "effect_label": "large",
+      "power": 0.9268,
+      "n": 10
+    },
+    "mann_whitney": {
+      "statistic": 80.0,
+      "p_value": 0.0257,
+      "significant": true
+    },
+    "mape_improvement_ci": {
+      "ci_lower": 0.0297,
+      "ci_upper": 0.0857,
+      "mean_improvement": 0.0554
+    },
+    "treatment_wins": 10,
+    "control_wins": 0
+  },
+  "optimization_tests": {
+    "mip_vs_greedy_improvement_pct": 6.48,
+    "satisfaction_rate_improvement": 60.0,
+    "mip_dominates": true,
+    "practical_significance": true,
+    "satisfaction_significance": true
+  },
+  "multiple_comparison_correction": {
+    "total_tests": 3,
+    "bonferroni_threshold": 0.016667,
+    "bonferroni_rejected": 2,
+    "fdr_rejected": 2,
+    "p_values": [
+      0.0,
+      0.0061,
+      0.162
+    ],
+    "test_names": [
+      "elasticity: OLS Elasticity vs Zero",
+      "elasticity: Bayesian vs OLS Paired t-test",
+      "elasticity: Bayesian vs OLS Mann-Whitney"
+    ]
+  },
+  "significance_scores": {
+    "OLS Elasticity vs Zero": {
+      "score": 1.0,
+      "grade": "A"
+    },
+    "Bayesian vs OLS Paired t-test": {
+      "score": 0.9502,
+      "grade": "A"
+    },
+    "Bayesian vs OLS Mann-Whitney": {
+      "score": 0.5066,
+      "grade": "C"
+    },
+    "Forecast A/B Test": {
+      "score": 1.0,
+      "grade": "A"
+    },
+    "MIP Optimization": {
+      "score": 1.0,
+      "grade": "A"
+    }
+  }
+}

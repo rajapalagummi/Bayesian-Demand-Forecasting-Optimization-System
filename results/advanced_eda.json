@@ -1,0 +1,54 @@
+{
+  "cross_product": {
+    "most_elastic_product": "PROD_009",
+    "least_elastic_product": "PROD_003",
+    "mean_agreement_gap": 0.3597,
+    "max_disagreement_product": "PROD_006"
+  },
+  "seasonality": {
+    "n_products": 10,
+    "n_weeks": 103,
+    "peak_week": 50,
+    "trough_week": 90
+  },
+  "clustering": {
+    "n_clusters": 3,
+    "cluster_sizes": {
+      "Medium Sensitivity": 4,
+      "High Sensitivity": 3,
+      "Low Sensitivity": 3
+    },
+    "cluster_mean_elasticity": {
+      "High Sensitivity": -0.9196,
+      "Low Sensitivity": -2.1222,
+      "Medium Sensitivity": -1.3686
+    }
+  },
+  "tier_analysis": {
+    "tier_demand_stats": [
+      {
+        "tier": "High Elasticity",
+        "mean_demand": 269.621359223301,
+        "std_demand": 193.91004658263302,
+        "median_demand": 198.0
+      },
+      {
+        "tier": "Low Elasticity",
+        "mean_demand": 230.01618122977345,
+        "std_demand": 140.21640184980959,
+        "median_demand": 203.0
+      },
+      {
+        "tier": "Medium Elasticity",
+        "mean_demand": 444.79368932038835,
+        "std_demand": 120.50751825181803,
+        "median_demand": 438.5
+      }
+    ]
+  },
+  "outliers": {
+    "n_demand_outliers": 0,
+    "n_volatility_outliers": 0,
+    "n_elasticity_outliers": 0
+  }
+}
