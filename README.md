@@ -331,3 +331,16 @@ MIT License — see [LICENSE](LICENSE) for details.
 ## Author
 
 **Raja Palagummi** · [GitHub](https://github.com/rajapalagummi) · [Portfolio](https://rajapalagummi.com)
+
+## Real-Data Validation — M5 Walmart (store CA_1)
+
+`python main.py --mode m5` runs the same pipeline on 1,030 weekly rows from the M5 Forecasting dataset: the last 104 full weeks for the 10 items with the most price variation (all FOODS_3). Results: `results/results_m5.json`.
+
+| Metric | Value |
+|---|---|
+| Bayesian 95% CI width vs OLS | 2.4457 vs 5.0634 (51.7% narrower) |
+| Elasticity-informed SARIMAX vs SARIMA MAPE | 2.4905 vs 2.7881 (11.44% better, 7/10 wins) |
+| MIP vs greedy / vs equal split | 4.36% / 23.99% |
+| Demand satisfaction, MIP vs greedy | 60.0% vs 0.0% |
+
+Real data has no ground-truth elasticity, so estimation accuracy is validated on synthetic data only. Absolute MAPE is high because single-item weekly volumes are low and spiky; the comparison is relative.

@@ -1,0 +1,182 @@
+{
+  "mode": "m5",
+  "data": "M5 Walmart store CA_1, last 104 full weeks, 10 items with the most price variation",
+  "n_products": 10,
+  "n_rows": 1030,
+  "products": [
+    {
+      "product_id": "FOODS_3_007",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 31.14,
+      "min_price": 0.2,
+      "max_price": 0.25
+    },
+    {
+      "product_id": "FOODS_3_076",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 27.22,
+      "min_price": 1.0,
+      "max_price": 1.25
+    },
+    {
+      "product_id": "FOODS_3_086",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 60.92,
+      "min_price": 1.0,
+      "max_price": 1.25
+    },
+    {
+      "product_id": "FOODS_3_245",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 49.08,
+      "min_price": 1.98,
+      "max_price": 2.48
+    },
+    {
+      "product_id": "FOODS_3_455",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 71.09,
+      "min_price": 1.98,
+      "max_price": 2.48
+    },
+    {
+      "product_id": "FOODS_3_498",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 33.55,
+      "min_price": 0.2,
+      "max_price": 0.25
+    },
+    {
+      "product_id": "FOODS_3_547",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 31.23,
+      "min_price": 0.2,
+      "max_price": 0.25
+    },
+    {
+      "product_id": "FOODS_3_580",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 37.24,
+      "min_price": 0.2,
+      "max_price": 0.25
+    },
+    {
+      "product_id": "FOODS_3_607",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 112.17,
+      "min_price": 1.98,
+      "max_price": 2.48
+    },
+    {
+      "product_id": "FOODS_3_681",
+      "category": "Food",
+      "weeks": 104,
+      "mean_units": 144.72,
+      "min_price": 1.0,
+      "max_price": 1.25
+    }
+  ],
+  "bayesian_vs_ols": {
+    "dense_n": 10,
+    "dense_bayesian_ci_width": 2.4457,
+    "dense_ols_ci_width": 5.0634,
+    "dense_ci_improvement_pct": 51.7,
+    "total_products": 10
+  },
+  "elasticities": [
+    {
+      "product_id": "FOODS_3_007",
+      "bayesian_elasticity": -1.5694,
+      "bayesian_ci_lower": -2.9854,
+      "bayesian_ci_upper": -0.1945,
+      "ols_elasticity": -6.8509
+    },
+    {
+      "product_id": "FOODS_3_076",
+      "bayesian_elasticity": -1.2367,
+      "bayesian_ci_lower": -2.7565,
+      "bayesian_ci_upper": 0.193,
+      "ols_elasticity": -1.5437
+    },
+    {
+      "product_id": "FOODS_3_086",
+      "bayesian_elasticity": -1.5647,
+      "bayesian_ci_lower": -3.4379,
+      "bayesian_ci_upper": -0.0036,
+      "ols_elasticity": -2.8831
+    },
+    {
+      "product_id": "FOODS_3_245",
+      "bayesian_elasticity": -2.0236,
+      "bayesian_ci_lower": -2.7609,
+      "bayesian_ci_upper": -1.4333,
+      "ols_elasticity": -2.2173
+    },
+    {
+      "product_id": "FOODS_3_455",
+      "bayesian_elasticity": -1.9251,
+      "bayesian_ci_lower": -2.2883,
+      "bayesian_ci_upper": -1.5106,
+      "ols_elasticity": -1.9769
+    },
+    {
+      "product_id": "FOODS_3_498",
+      "bayesian_elasticity": -0.6778,
+      "bayesian_ci_lower": -2.0292,
+      "bayesian_ci_upper": 0.6632,
+      "ols_elasticity": -0.9194
+    },
+    {
+      "product_id": "FOODS_3_547",
+      "bayesian_elasticity": -0.9315,
+      "bayesian_ci_lower": -2.3841,
+      "bayesian_ci_upper": 0.4731,
+      "ols_elasticity": -3.1311
+    },
+    {
+      "product_id": "FOODS_3_580",
+      "bayesian_elasticity": -0.6584,
+      "bayesian_ci_lower": -2.0855,
+      "bayesian_ci_upper": 0.7657,
+      "ols_elasticity": -0.5722
+    },
+    {
+      "product_id": "FOODS_3_607",
+      "bayesian_elasticity": -1.8862,
+      "bayesian_ci_lower": -2.5179,
+      "bayesian_ci_upper": -1.1601,
+      "ols_elasticity": -2.0224
+    },
+    {
+      "product_id": "FOODS_3_681",
+      "bayesian_elasticity": -1.4834,
+      "bayesian_ci_lower": -3.2314,
+      "bayesian_ci_upper": 0.1872,
+      "ols_elasticity": -2.9383
+    }
+  ],
+  "forecast_ab_test": {
+    "sarima_avg_mape": 2.7881,
+    "elasticity_avg_mape": 2.4905,
+    "mape_improvement_pct": 11.44,
+    "n_products_tested": 10,
+    "treatment_wins": 7
+  },
+  "optimization": {
+    "mip_objective": 3399.62,
+    "greedy_objective": 3554.62,
+    "mip_vs_greedy_improvement_pct": 4.36,
+    "mip_vs_equal_improvement_pct": 23.99,
+    "mip_satisfaction_rate": 60.0,
+    "greedy_satisfaction_rate": 0.0
+  }
+}
